@@ -39,10 +39,10 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'avto_avito: index' %}">Главная</a>
+            <a class="nav-link" href="{% url 'avto_avito:index' %}">Главная</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'avto_avito: create' %}">Создать пост</a>
+            <a class="nav-link" href="{% url 'avto_avito:create' %}">Создать пост</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="post.html">Sample Post</a>
@@ -62,8 +62,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>Clean Blog</h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+            <h1>{% block header %}   {% endblock %} </h1>
+            <span class="subheading">{% block header_2 %}   {% endblock %} </span>
           </div>
         </div>
       </div>

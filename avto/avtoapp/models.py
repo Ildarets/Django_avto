@@ -34,6 +34,7 @@ class Avto(models.Model):
     color = models.TextField()
     cat_marka = models.ForeignKey(Marks, on_delete=models.CASCADE)
     cat_mesto = models.ForeignKey(Mesto, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='posts', null=True, blank=True)
 
     def __str__(self):
         return self.model

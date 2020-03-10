@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{post.cat_marka}}
+
+{% endblock %}
+
+
+{%  block header %}
+{{post.cat_marka}}
+{% endblock %}
+
+{%  block header_2 %}
+Модель: {{post.model}},
+Комплектация: {{post.complectation}},
+Модификация: {{post.modification}},
+{% endblock %}
+
+{% block content %}
+  <!-- Post Content -->
+
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+        <img src="{{ post.image.url}}">
+<!--        <img src = 'https://cdn2.autocentre.ua/wp-content/uploads/2019/08/honda-breeze-1-1.jpg'>-->
+
+            {{post.cat_mesto}}
+        </div>
+      </div>
+
+ {% endblock %}
