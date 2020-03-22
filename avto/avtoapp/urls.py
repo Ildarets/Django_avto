@@ -12,6 +12,8 @@ urlpatterns = [
     path('post/<int:id>/', views.post, name='post'),
     path('avto_list/', views.AvtoListView.as_view(), name = 'avto_list'),
     path('post_detail/<int:pk>/', views.AvtoDetailView.as_view(), name = 'post_detail'),
-    path('create_avto/', views.AvtoCreateView.as_view(), name = 'create_avto')
+    path('create_avto/', views.AvtoCreateView.as_view(), name = 'create_avto'),
+    path('avto_update/<int:pk>/', views.AvtoUpdateView.as_view(), name = 'avto_update'),
+    path('avto_delete/<int:pk>/', views.AvtoDeleteView.as_view(), name = 'avto_delete'),
 ]
 

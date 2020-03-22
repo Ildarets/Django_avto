@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import Marks, Mesto, Avto
 from .forms import ContactForm, PostForm
 from django.core.mail import send_mail
@@ -71,7 +71,17 @@ class AvtoCreateView(CreateView):
     success_url = reverse_lazy('avto:avto_list')
     template_name = 'avtoapp/create_avto.html'
 
+class AvtoUpdateView(UpdateView):
+    fields = '__all__'
+    model = Avto
+    success_url = reverse_lazy('avto:avto_list')
+    template_name = 'avtoapp/create_avto.html'
 
+class AvtoDeleteView(DeleteView):
+    template_name = 'avtoapp/avto_delete_confirm.html'
+    model = Avto
+    success_url = reverse_lazy('avto:avto_list')
+    context_object_name = 'avto_delete'
 
 
 
