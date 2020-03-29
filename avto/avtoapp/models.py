@@ -1,8 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Marks(models.Model):
     name = models.CharField(max_length=16, unique=True)
+
+
 
     def __str__(self):
         return self.name
@@ -35,6 +39,10 @@ class Avto(models.Model):
     cat_marka = models.ForeignKey(Marks, on_delete=models.CASCADE)
     cat_mesto = models.ForeignKey(Mesto, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='posts', null=True, blank=True)
+    user = models.ForeignKey(User)
+    text = models.TextField()
+    href = models.CharField
+
 
     def __str__(self):
         return self.model
