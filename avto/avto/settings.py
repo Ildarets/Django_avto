@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'avtoapp'
+    'avtoapp',
     'usersapp'
 ]
 
@@ -128,3 +128,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 AUTH_USER_MODEL = 'usersapp.BlogUser'
+
+# Куда идти после логина
+LOGIN_REDIRECT_URL = '/'
+# Куда идты после выхода
+LOGOUT_REDIRECT_URL = '/'
+# Куда идти на логин
+LOGIN_URL = '/users/login/'

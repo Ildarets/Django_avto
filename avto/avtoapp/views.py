@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
@@ -43,6 +45,7 @@ def post(request, id):
     post = get_object_or_404(Avto, id = id)
     return render(request, 'avtoapp/post.html', context = {'post': post})
 
+@login_required
 def create_post(request):
     if request.method == "GET":
         form = PostForm()
@@ -50,6 +53,7 @@ def create_post(request):
     else:
         form = PostForm(request.POST, files = request.FILES)
         if form.is_valid():
+            form.instance.user = request.user
             form.save()
             return HttpResponseRedirect(reverse('avtoapp:index'))
         else:
@@ -65,7 +69,7 @@ class AvtoDetailView(DetailView):
     template_name = 'avtoapp/post_detail.html'
     context_object_name = 'post_detail'
 
-class AvtoCreateView(CreateView):
+class AvtoCreateView(LoginRequiredMixin,CreateView):
     fields = '__all__'
     model = Avto
     success_url = reverse_lazy('avto:avto_list')
@@ -77,11 +81,14 @@ class AvtoUpdateView(UpdateView):
     success_url = reverse_lazy('avto:avto_list')
     template_name = 'avtoapp/create_avto.html'
 
-class AvtoDeleteView(DeleteView):
+# Удаляет только суперпользователь
+class AvtoDeleteView(UserPassesTestMixin, DeleteView):
     template_name = 'avtoapp/avto_delete_confirm.html'
     model = Avto
     success_url = reverse_lazy('avto:avto_list')
     context_object_name = 'avto_delete'
+    def test_func(self):
+        return self.request.user.is_superuser
 
 
 
