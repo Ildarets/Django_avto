@@ -21,10 +21,16 @@
 
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-        <img src="{{ post.image.url}}">
-<!--        <img src = 'https://cdn2.autocentre.ua/wp-content/uploads/2019/08/honda-breeze-1-1.jpg'>-->
+            <h1>{{ post.price}} руб. </h1>
+            <hr>
+            <a href = {{post.href}}> Посмотреть на сайте Avito </a>
+            <hr>
+            <img src = "https://{{post.image_href_0}}">
+            <img src = "https://{{post.image_href_1}}">
+            <img src = "https://{{post.image_href_2}}">
+            <hr>
+            {{post.text}}
 
-            {{post.cat_mesto}}
         </div>
       </div>
 

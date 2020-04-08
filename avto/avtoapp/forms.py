@@ -10,4 +10,4 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Avto
         fields = '__all__'
-        
+
