@@ -63,6 +63,7 @@ def create_post(request):
 class AvtoListView(ListView):
     model = Avto
     template_name = 'avtoapp/avto_list.html'
+    context_object_name = 'avto'
 
 class AvtoDetailView(DetailView):
     model = Avto
