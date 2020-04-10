@@ -49,4 +49,7 @@ class Avto(models.Model):
     def __str__(self):
         return self.model
 
+    def has_image(self):
+        return bool(self.image_href_0)
+
 
