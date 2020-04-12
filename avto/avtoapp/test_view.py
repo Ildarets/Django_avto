@@ -37,7 +37,7 @@ class ViewsTest(TestCase):
         self.assertEqual(response.status_code, 302)
 
         # Логиним
-        self.client.login(username='test_user', password='1234567')
+        self.client.login(username='ildar', password='ildar1234567')
 
         response = self.client.get('/create/')
         self.assertEqual(response.status_code, 200)
