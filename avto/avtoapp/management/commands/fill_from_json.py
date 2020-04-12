@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         # Считываем с файла cars_params_dict5.json
-        path = os.path.join(settings.BASE_DIR,'fixtures','cars_params_dict5.json' )
+        path = os.path.join(settings.BASE_DIR,'fixtures','cars_params_skoda.json' )
         with open(path, 'r') as f:
             result = json.load(f)
 
@@ -55,6 +55,11 @@ class Command(BaseCommand):
                 color = result[i]['Цвет']
                 cat_marka = Marks.objects.get(name = result[i]['Марка'])
                 cat_mesto = Mesto.objects.get(name = mesto)
+                text = result['text']
+                href = result['referense']
+                image_href_0 = result['image_href_0']
+                image_href_1 = result['image_href_1']
+                image_href_2 = result['image_href_2']
 
                 Avto.objects.create(price=price, vladeltsev = vladeltsev, year = year,
                                     doors= doors, complectation= complectation,
@@ -62,7 +67,9 @@ class Command(BaseCommand):
                                     pokolenie=pokolenie,privod=privod, probeg=probeg,
                                     rull=rull, sostoyanie=sostoyanie,type_engine= type_engine,
                                     type_kyzov=type_kyzov, color=color, cat_marka = cat_marka,
-                                    cat_mesto=cat_mesto)
+                                    cat_mesto=cat_mesto, href=href, text=text,
+                                    image_href_0=image_href_0, image_href_1=image_href_1,
+                                    image_href_2=image_href_2)
             except:
                 continue
 

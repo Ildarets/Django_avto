@@ -6,13 +6,25 @@
 
 {% block content %}
 <div class="row">
-    <h1>{{name}}</h1>
+    <h1>{{post_detail.cat_marka}}</h1>
     <div class="col-lg-8 col-md-10 mx-auto">
-        {{post_detail.cat_marka}}
-    </div>
+        <h3>Цена: {{post_detail.price}} </h3>
+        <hr>
+        <img src = "https://{{post_detail.image_href_0}}">
+        <img src = "https://{{post_detail.image_href_1}}">
+        <img src = "https://{{post_detail.image_href_2}}">
+        <hr>
+        {{post_detail.text}}
+        <hr>
+            <a href = {{post.href}}> Посмотреть на сайте Avito </a>
+        <hr>
 
-    <a href="{% url 'avto:avto_update' pk=object.pk %}">
+
+    </div>
+<hr>
+
+</div>
+<a href="{% url 'avto:avto_update' pk=object.pk %}">
             Изменить
         </a>
-</div>
 {% endblock %}

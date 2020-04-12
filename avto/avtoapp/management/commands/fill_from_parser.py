@@ -58,11 +58,11 @@ class Command(BaseCommand):
             except:
                 time.sleep(30)
 
-        # Создание
+            # Создание
             print(result)
             try:
                 marka = result['Марка']
-                marks_obj = Marks.objects.filter(name = marka)
+                marks_obj = Marks.objects.filter(name=marka)
                 if not marks_obj:
                     Marks.objects.create(name=marka)
             except:
@@ -72,9 +72,9 @@ class Command(BaseCommand):
                 mesto = result['Местоосмотра']
                 mesto = mesto.split(',')
                 mesto = mesto[0]
-                mesto_obj = Mesto.objects.filter(name = mesto)
+                mesto_obj = Mesto.objects.filter(name=mesto)
                 if not mesto_obj:
-                    Mesto.objects.create(name = mesto)
+                    Mesto.objects.create(name=mesto)
             except:
                 continue
 
@@ -98,8 +98,8 @@ class Command(BaseCommand):
                 type_engine = result['Типдвигателя']
                 type_kyzov = result['Типкузова']
                 color = result['Цвет']
-                cat_marka = Marks.objects.get(name = result['Марка'])
-                cat_mesto = Mesto.objects.get(name = mesto)
+                cat_marka = Marks.objects.get(name=result['Марка'])
+                cat_mesto = Mesto.objects.get(name=mesto)
                 text = result['text']
                 href = result['referense']
                 image_href_0 = result['image_href_0']
@@ -108,21 +108,13 @@ class Command(BaseCommand):
             except:
                 continue
 
-
-            Avto.objects.create(price=price, vladeltsev = vladeltsev, year = year,
-                                doors= doors, complectation= complectation,
+            Avto.objects.create(price=price, vladeltsev=vladeltsev, year=year,
+                                doors=doors, complectation=complectation,
                                 box=box, model=model, modification=modification,
-                                pokolenie=pokolenie,privod=privod, probeg=probeg,
-                                rull=rull, sostoyanie=sostoyanie,type_engine= type_engine,
-                                type_kyzov=type_kyzov, color=color, cat_marka = cat_marka,
-                                cat_mesto=cat_mesto, href = href, text = text,
-                                image_href_0 = image_href_0, image_href_1 = image_href_1,
-                                image_href_2 = image_href_2)
-
-
-
-
-
-
-
+                                pokolenie=pokolenie, privod=privod, probeg=probeg,
+                                rull=rull, sostoyanie=sostoyanie, type_engine=type_engine,
+                                type_kyzov=type_kyzov, color=color, cat_marka=cat_marka,
+                                cat_mesto=cat_mesto, href=href, text=text,
+                                image_href_0=image_href_0, image_href_1=image_href_1,
+                                image_href_2=image_href_2)
 

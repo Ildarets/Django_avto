@@ -1,6 +1,6 @@
-import requests
 from bs4 import BeautifulSoup
 import time
+import requests as r
 
 domain = 'https://www.avito.ru'
 
@@ -30,7 +30,7 @@ class Deep_Parser:
         'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36',
         }
 
-        response = requests.get(url, headers=headers)
+        response = r.get(url, headers=headers)
         soup = BeautifulSoup(response.text, 'html.parser')
 
         parameters_car = {}
