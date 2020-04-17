@@ -14,6 +14,12 @@ class ViewsTest(TestCase):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
 
+        response = self.client.get('/?page=2')
+        self.assertEqual(response.status_code, 200)
+
+        response = self.client.get('/?page=www')
+        self.assertEqual(response.status_code, 200)
+
         response = self.client.get('/avto_list/')
         self.assertEqual(response.status_code, 200)
 
