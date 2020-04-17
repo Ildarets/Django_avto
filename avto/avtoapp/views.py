@@ -33,7 +33,7 @@ def main_view(request):
                                                          'avto': avto,
                                                          'header': header,
                                                          'header_2': header_2})
-
+@login_required
 def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
