@@ -11,8 +11,8 @@ class AvtoTestCaseMixer(TestCase):
         self.post = mixer.blend(Avto)
 
 
-    def test_has_image(self):
-        self.assertFalse(self.post.has_price())
+    def test_has_praice(self):
+        self.assertTrue(self.post.has_price())
 
 
 class MarksTestMixer(TestCase):

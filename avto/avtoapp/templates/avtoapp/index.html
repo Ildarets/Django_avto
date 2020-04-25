@@ -1,7 +1,16 @@
 {% extends "base.html" %}
+{% load str_extensions %}
 
 {% block title %}
 Главная страница
+{% endblock %}
+
+{%  block header %}
+{{header|capitalize}}
+{% endblock %}
+
+{%  block header_2 %}
+{{header_2|title}}
 {% endblock %}
 
 {% block content %}
@@ -28,9 +37,26 @@
         {% endfor %}
         <hr>
         <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+<!--        <div class="clearfix">-->
+<!--          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>-->
+<!--        </div>-->
+
+        <div class = "pagination">
+          <span class = "step-links">
+            {% if avto.has_previous %}
+            <a href = "?page={{avto.previous_page_number}}"> предыдущий </a>
+            {% endif %}
+
+            <span class="current">
+              Страница {{ avto.number }} из {{ avto.paginator.num_pages }}
+            </span>
+
+            {% if avto.has_next %}
+            <a href = "?page={{avto.next_page_number}}"> следующий </a>
+            {% endif %}
+          </span>
         </div>
+
       </div>
     </div>
 

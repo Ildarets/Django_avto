@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView, CreateView, DeleteView, U
 from .models import Marks, Mesto, Avto
 from .forms import ContactForm, PostForm
 from django.core.mail import send_mail
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here
 
@@ -15,11 +16,24 @@ def main_view(request):
     marks = Marks.objects.all()
     mesto = Mesto.objects.all()
     avto = Avto.objects.all()
+    paginator = Paginator(avto, 10)
+    page = request.GET.get('page')
+    try:
+        avto = paginator.page(page)
+    except PageNotAnInteger:
+        avto = paginator.page(1)
+    except EmptyPage:
+        avto = paginator.page(paginator.num_pages)
+
+    header = "главная страница"
+    header_2 = "Список автомобилей, которые есть на сайте"
 
     return render(request,'avtoapp/index.html', context={'marks': marks,
                                                          'mesto': mesto,
-                                                         'avto': avto})
-
+                                                         'avto': avto,
+                                                         'header': header,
+                                                         'header_2': header_2})
+@login_required
 def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -64,6 +78,7 @@ class AvtoListView(ListView):
     model = Avto
     template_name = 'avtoapp/avto_list.html'
     context_object_name = 'avto'
+    paginate_by = 10
 
 class AvtoDetailView(DetailView):
     model = Avto
