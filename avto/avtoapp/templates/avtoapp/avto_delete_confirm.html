@@ -24,7 +24,9 @@
         <img src="{{ avto_delete.image.url}}">
 <!--        <img src = 'https://cdn2.autocentre.ua/wp-content/uploads/2019/08/honda-breeze-1-1.jpg'>-->
 
-            {{post_detail.cat_mesto}}
+            <img src = "https://{{avto_delete.image_href_0}}">
+            <img src = "https://{{avto_delete.image_href_1}}">
+            <hr>
             <a href = "{%url 'avto:avto_update' pk=object.pk%}">
                 Изменить
             </a>
