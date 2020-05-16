@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'usersapp',
     'capapp',
     'debug_toolbar',
-    'rest_framework'
+    'rest_framework',
     'django_cleanup.apps.CleanupConfig',
 ]
 
