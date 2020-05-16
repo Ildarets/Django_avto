@@ -25,7 +25,7 @@ SECRET_KEY = 'y5*q^e3!w&qa&(*pdrdti%wsv4_-svv8=!%r%y8o53&!#@km8b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'avtoapp',
     'usersapp',
     'capapp',
-    'debug_toolbar'
+    'debug_toolbar',
+    'rest_framework'
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +77,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'avto.wsgi.application'
 
+ADMINS = [('Ildar', 'ildarets@mail.ru')]
+
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -83,7 +87,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
+
+    # 'default': {
+    #     'NAME': 'sitedb',
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'USER': 'django',
+    #     'PASSWORD': 'nu123456',
+    #     'HOST': 'localhost'
+    # }
 }
 
 
@@ -144,3 +156,11 @@ LOGIN_URL = '/users/login/'
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
