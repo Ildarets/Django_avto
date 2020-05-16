@@ -16,9 +16,7 @@ urlpatterns = [
     path('', include('avtoapp.urls', namespace='avto_avito')),
     path('users/', include('usersapp.urls', namespace='users')),
     path('api_auth/', include('rest_framework.urls')),
-    path('categories/', include(router.urls)),
-    # path('marks/', include(router.urls)),
-    # path('mesto/', include(router.urls)),
+    path('api/v0/', include(router.urls)),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
