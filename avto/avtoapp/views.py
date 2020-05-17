@@ -16,7 +16,7 @@ def main_view(request):
     marks = Marks.objects.all()
     mesto = Mesto.objects.all()
     avto = Avto.objects.select_related('cat_marka', 'cat_mesto').all()
-    paginator = Paginator(avto, 30)
+    paginator = Paginator(avto, 10)
     page = request.GET.get('page')
     try:
         avto = paginator.page(page)
@@ -78,7 +78,7 @@ class AvtoListView(ListView):
     queryset = Avto.objects.select_related('cat_marka', 'cat_mesto').all()
     template_name = 'avtoapp/avto_list.html'
     context_object_name = 'avto'
-    paginate_by = 30
+    paginate_by = 10
 
 class AvtoDetailView(DetailView):
     model = Avto
