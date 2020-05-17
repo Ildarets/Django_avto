@@ -52,4 +52,8 @@ class Avto(models.Model):
     def has_price(self):
         return bool(self.price)
 
+    def get_all_cat_marka(self):
+        cat_marka = Marks.objects.all()
+        return cat_marka
+
 
