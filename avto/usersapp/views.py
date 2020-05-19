@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 
 from .forms import RegistrationForm
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from .models import BlogUser
 
 # Create your views here.
@@ -16,3 +16,7 @@ class UserCreateView(CreateView):
     template_name = 'usersapp/register.html'
     form_class = RegistrationForm
     success_url = reverse_lazy('users:login')
+
+class UserDetailView(DetailView):
+    template_name = 'usersapp/profile.html'
+    model = BlogUser
