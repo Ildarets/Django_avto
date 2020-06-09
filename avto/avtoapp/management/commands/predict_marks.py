@@ -8,9 +8,11 @@ import os
 import pandas as pd 
 import json
 #from sklearn.externals import joblib
+from django.core.management.base import BaseCommand
 from . model_loaded import dict_model_pred
 from . sts_loaded import dict_model_sts
 from django.conf import settings
+from avtoapp.models import Avto_pred
 
 # path_predict_model = 'H:/avto/data_cars/pkl/'
 
@@ -74,6 +76,41 @@ def predict_marks(mark, df_avto_i):
             # print("Цена на сайте Avito:", real_price.iloc[0])
             # print('-' * 20)
             # print()
+
+            price = real_price.iloc[0]
+            price_pred = predicted_price
+            vladeltsev = df_avto_i['vladeltsev_inf'].iloc[0]
+            year = df_avto_i['Year_inf'].iloc[0]
+            doors = df_avto_i['doors_inf'].iloc[0]
+            complectation = df_avto_i['complectation_inf'].iloc[0]
+            box = df_avto_i['box_inf'].iloc[0]
+            model = df_avto_i['Модель_inf'].iloc[0]
+            modification = df_avto_i['modification_inf'].iloc[0]
+            pokolenie = df_avto_i['pokolenieinf'].iloc[0]
+            privod = df_avto_i['privod_inf'].iloc[0]
+            probeg = df_avto_i['Пробег_inf'].iloc[0]
+            rull = df_avto_i['rull_inf'].iloc[0]
+            sostoyanie = df_avto_i['sostoyanie_inf'].iloc[0]
+            type_engine = df_avto_i['type_engine_inf'].iloc[0]
+            type_kyzov = df_avto_i['type_kyzov_inf'].iloc[0]
+            color = df_avto_i['color_inf'].iloc[0]
+            cat_marka = df_avto_i['Марка_inf'].iloc[0]
+            cat_mesto = df_avto_i['Местоосмотра_inf'].iloc[0]
+            text = df_avto_i['Description_inf'].iloc[0]
+            href = df_avto_i['referense'].iloc[0]
+            image_href_0 = df_avto_i['image_href_0_inf'].iloc[0]
+            image_href_1 = df_avto_i['image_href_1_inf'].iloc[0]
+            image_href_2 = df_avto_i['image_href_2_inf'].iloc[0]
+
+            Avto_pred.objects.create(price=price, price_pred = price_pred, vladeltsev=vladeltsev, year=year,
+                                doors=doors, complectation=complectation,
+                                box=box, model=model, modification=modification,
+                                pokolenie=pokolenie, privod=privod, probeg=probeg,
+                                rull=rull, sostoyanie=sostoyanie, type_engine=type_engine,
+                                type_kyzov=type_kyzov, color=color, cat_marka=cat_marka,
+                                cat_mesto=cat_mesto, href=href, text=text,
+                                image_href_0=image_href_0, image_href_1=image_href_1,
+                                image_href_2=image_href_2)
     except:
         pass
         

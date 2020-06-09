@@ -4,6 +4,9 @@ Created on Fri Jun  5 10:27:52 2020
 
 @author: ildar
 """
+"""
+Загружает предобученные модели из папки fixtures/new_pkl и помещает их в словарь dict_model
+"""
 import os
 
 from sklearn.externals import joblib
