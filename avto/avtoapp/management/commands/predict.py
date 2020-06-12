@@ -21,7 +21,9 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
 # import tensorflow as tf
-
+"""
+Предсказывает цену с помощью нейронных сетей. Но пока не работает.
+"""
 
 # %%
 def fill_top(column_top):

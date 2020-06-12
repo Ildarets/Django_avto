@@ -4,25 +4,36 @@
 Список автомобилей
 {% endblock %}
 
+{%  block header %}
+Список
+{% endblock %}
+
+{%  block header_2 %}
+<h3>рекомендованных автомобилей с сайта Avito.ru.</h3>
+<h4>С помощью методов машинного обучения!</h4>
+{% endblock %}
+
 {% block content %}
-
 <ul>
-    {% for item in avto %}
-    <li>
-        <a href="{% url 'avto:post_detail' pk=item.pk %}">
-            {{item.cat_marka}}, {{item.price}}
-        </a>
-/
-        <a href="{% url 'avto:avto_update' pk=item.pk %}">
-            Изменить
-        </a>
-        /
-        <a href="{% url 'avto:avto_delete' pk=item.pk %}">
-            Удалить
-        </a>
 
-    </li>
-    {% endfor %}
+    {% for item in avto %}
+        <div class="post-preview">
+
+          <a href="{% url 'avto:post_detail' pk=item.pk %}">
+            <h2 class="post-title">
+              {{ item.cat_marka}}
+            </h2>
+            <h3 class="post-subtitle">
+               Цена на Avito: {{ item.price}} руб.
+            </h3>
+          </a>
+          <p class="post-meta">Характеристики:
+            Пробег: {{item.probeg}},
+            год выпуска: {{item.year}}, Модель: {{item.model}}, Комплектация: {{item.complectation}}, Состояние: {{item.sostoyanie}},
+            Цвет: {{item.color}}, Место осмотра: {{item.cat_mesto}}, Модификация: {{item.modification}}, Кузов: {{item.type_kyzov}}</p>
+        </div>
+        <hr>
+        {% endfor %}
 
 
     <div class="pagination">

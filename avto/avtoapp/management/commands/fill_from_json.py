@@ -4,6 +4,10 @@ import json
 import os
 from django.conf import settings
 
+"""
+Заполнение таблиц из json  файла.
+"""
+
 # from blogapp.models import Poll
 
 class Command(BaseCommand):

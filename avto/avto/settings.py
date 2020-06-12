@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'y5*q^e3!w&qa&(*pdrdti%wsv4_-svv8=!%r%y8o53&!#@km8b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -40,10 +40,10 @@ INSTALLED_APPS = [
     'avtoapp',
     'usersapp',
     'capapp',
-    'debug_toolbar',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'django_cleanup.apps.CleanupConfig',
+    # 'debug_toolbar',
+    # 'rest_framework',
+    # 'rest_framework.authtoken',
+    # 'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware'
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
 ROOT_URLCONF = 'avto.urls'
@@ -85,18 +85,18 @@ ADMINS = [('Ildar', 'ildarets@mail.ru')]
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-
     # 'default': {
-    #     'NAME': 'sitedb',
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'USER': 'django',
-    #     'PASSWORD': 'nu123456',
-    #     'HOST': 'localhost'
-    # }
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # },
+
+    'default': {
+        'NAME': 'sitedb',
+        'ENGINE': 'django.db.backends.postgresql',
+        'USER': 'django',
+        'PASSWORD': 'nu123456',
+        'HOST': 'localhost'
+    }
 }
 
 

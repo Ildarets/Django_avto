@@ -12,7 +12,9 @@ from django.conf import settings
 
 #path = 'H:/avto/data_cars/pkl/'
 # path_sts = 'H:/avto/data_cars/sts_pkl/'
-
+"""
+Выгружает шкалированные файлы из pkl  в словарь для дальнейшео использования в шкалировании каждой модели.
+"""
 
 ##print(list_mark)
 path_sts = os.path.join(settings.BASE_DIR,'fixtures','sts_pkl')

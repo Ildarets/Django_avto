@@ -18,7 +18,9 @@ from django.conf import settings
 
 #%% Заливаем колонки
 # columns = 'cars_columns.json'
-
+"""
+Предсказывает цену с помощью модели SVR. Работает.
+"""
 
 class Command(BaseCommand):
 

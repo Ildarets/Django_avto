@@ -14,6 +14,9 @@ from . sts_loaded import dict_model_sts
 from django.conf import settings
 from avtoapp.models import Avto_pred
 
+"""
+Делает предсказание цены в зависимости от марки авто и загоняет в таблицу Avto_pred.
+"""
 # path_predict_model = 'H:/avto/data_cars/pkl/'
 
 path_columns = os.path.join(settings.BASE_DIR,'fixtures','cars_columns.json')
@@ -58,7 +61,6 @@ def predict_marks(mark, df_avto_i):
             print("****" * 10)
             print(column)
             print()
-     #TODO Сделать загрузку модели в другом месте и сделать шкаливраоние каждой модели       
 #    model_loaded = joblib.load(path_predict_model + f"svr_cv_{mark}.pkl")
 
     model_loaded = dict_model[mark]
@@ -114,35 +116,3 @@ def predict_marks(mark, df_avto_i):
     except:
         pass
         
-        
-#%%
-#numer_features = ['Year', 'horse', 'price_int', 'Пробег', 'probeg_god', 'probeg_god_del',
-#       'year_sqv2', 'year_sqv3', 'probeg_sqv2', 'probeg_sqv3', 'Year2020',
-#       'year2020_sqv2', 'year2020_sqv3', 'probeg_god_del_sqv2', 'horse_sqv2']
-#
-#categ_features = ['ВладельцевпоПТС', 'Количестводверей', 'Комплектация', 'Коробкапередач',
-#       'Марка', 'Модель', 'Модификация', 'Поколение', 'Привод', 'Руль',
-#       'Состояние', 'Типдвигателя', 'Типкузова', 'Цвет']
-#
-#column_info = ['price_inf', 'Year_inf', 'Пробег_inf', 'horse_inf', 'Марка_inf', 'Модель_inf']
-#
-##%%
-#stdSc = StandardScaler()
-##%%
-#stsSc_pkl = stdSc.fit(X_df_avto.loc[:, numer_features])
-##%%
-#joblib.dump(stsSc_pkl, "sts_pkl_test.pkl")
-##%%
-#stsSc_loaded = joblib.load(path_stsSc + "sts_pkl_test.pkl")
-#X_df_avto.loc[:, numer_features] = stsSc_loaded.transform(X_df_avto.loc[:, numer_features])
-###%%
-##X_df_avto.loc[:, numer_features] = stdSc.fit_transform(X_df_avto.loc[:, numer_features])
-#X_df_avto_numer = X_df_avto[numer_features]
-##X_df_avto_numer
-##%%
-#X_df_avto_categ = X_df_avto[categ_features]
-#X_df_avto_column_info = X_df_avto[column_info]
-##%%
-#X_df_avto = pd.concat([X_df_avto_numer, X_df_avto_categ, X_df_avto_column_info], axis = 1) 
-##%%
-#X_df_avto.info()
