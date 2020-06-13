@@ -29,7 +29,7 @@ class Command(BaseCommand):
         #     car_columns = json.load(f)
         #%%
         # file = 'cars_params_test_1.json'
-        path_test = os.path.join(settings.BASE_DIR, 'fixtures', 'cars_params_test_1.json')
+        path_test = os.path.join(settings.BASE_DIR, 'fixtures', 'parsed_cars.json')
         with open (path_test, 'r', encoding='utf-8') as f:
             avto = json.load(f)
 

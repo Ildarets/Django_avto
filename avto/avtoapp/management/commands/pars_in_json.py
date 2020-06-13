@@ -14,7 +14,7 @@ from django.conf import settings
 Загружает в файл json данные о машинах с сайта Avito
 """
 
-path = os.path.join(settings.BASE_DIR,'fixtures','cars_params_test_1.json' )
+path = os.path.join(settings.BASE_DIR,'fixtures','parsed_cars.json' )
 # from blogapp.models import Poll
 
 class Command(BaseCommand):
