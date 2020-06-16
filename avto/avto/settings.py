@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'y5*q^e3!w&qa&(*pdrdti%wsv4_-svv8=!%r%y8o53&!#@km8b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -40,10 +40,10 @@ INSTALLED_APPS = [
     'avtoapp',
     'usersapp',
     'capapp',
-    # 'debug_toolbar',
-    # 'rest_framework',
-    # 'rest_framework.authtoken',
-    # 'django_cleanup.apps.CleanupConfig',
+    'debug_toolbar',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware'
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
 ROOT_URLCONF = 'avto.urls'
