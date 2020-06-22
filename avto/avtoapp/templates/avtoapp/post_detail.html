@@ -1,22 +1,49 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{post.name}}
-{% endblock%}
+{{post_detail.cat_marka}}
+
+{% endblock %}
+
+
+{%  block header %}
+{{post_detail.cat_marka}}
+{{post_detail.model}}
+{% endblock %}
+
+{%  block header_2 %}
+        <h3>Цена на сайте Avito: {{post_detail.price}} </h3>
+        <h3>Цена рекомендованная: {{post_detail.price_pred}} </h3>
+{% endblock %}
 
 {% block content %}
 <div class="row">
-    <h1>{{post_detail.cat_marka}}</h1>
     <div class="col-lg-8 col-md-10 mx-auto">
-        <h3>Цена: {{post_detail.price}} </h3>
-        <hr>
         <img src = "https://{{post_detail.image_href_0}}">
         <img src = "https://{{post_detail.image_href_1}}">
         <img src = "https://{{post_detail.image_href_2}}">
         <hr>
+       <ul>
+         <li>Владельцев по ПТС: {{post_detail.vladeltsev}} </li>
+         <li>Год выпуска: {{post_detail.year}}</li>
+         <li>Количество дверей: {{post_detail.doors}}</li>
+         <li>Комплектация: {{post_detail.complectation}}</li>
+         <li>Коробка передач: {{post_detail.box}}</li>
+         <li>Модификация: {{post_detail.modification}}</li>
+         <li>Поколение: {{post_detail.pokolenie}}</li>
+         <li>Привод: {{post_detail.privod}}</li>
+         <li>Пробег: {{post_detail.probeg}} км. </li>
+         <li>Руль: {{post_detail.rull}}</li>
+         <li>Состояние: {{post_detail.sostoyanie}}</li>
+         <li>Тип двигателя: {{post_detail.type_engine}}</li>
+         <li>Тип кузова: {{post_detail.type_kyzov}}</li>
+         <li>Цвет: {{post_detail.color}}</li>
+         <li>Место продажи: {{post_detail.cat_mesto}}</li>
+       </ul>
+        <hr>
         {{post_detail.text}}
         <hr>
-            <a href = {{post.href}}> Посмотреть на сайте Avito </a>
+            <a href = {{post_detail.href}}> Посмотреть на сайте Avito. Жми! {{post_detail.href}} </a>
         <hr>
 
 

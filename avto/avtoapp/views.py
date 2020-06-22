@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
-from .models import Marks, Mesto, Avto
+from .models import Marks, Mesto, Avto, Avto_pred
 from .forms import ContactForm, PostForm
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -75,32 +75,32 @@ def create_post(request):
 
 
 class AvtoListView(ListView):
-    queryset = Avto.objects.select_related('cat_marka', 'cat_mesto').all()
+    model = Avto_pred
     template_name = 'avtoapp/avto_list.html'
     context_object_name = 'avto'
     paginate_by = 10
 
 class AvtoDetailView(DetailView):
-    model = Avto
+    model = Avto_pred
     template_name = 'avtoapp/post_detail.html'
     context_object_name = 'post_detail'
 
 class AvtoCreateView(LoginRequiredMixin,CreateView):
     fields = '__all__'
-    model = Avto
+    model = Avto_pred
     success_url = reverse_lazy('avto:avto_list')
     template_name = 'avtoapp/create_avto.html'
 
 class AvtoUpdateView(UpdateView):
     fields = '__all__'
-    model = Avto
+    model = Avto_pred
     success_url = reverse_lazy('avto:avto_list')
     template_name = 'avtoapp/create_avto.html'
 
 # Удаляет только суперпользователь
 class AvtoDeleteView(UserPassesTestMixin, DeleteView):
     template_name = 'avtoapp/avto_delete_confirm.html'
-    model = Avto
+    model = Avto_pred
     success_url = reverse_lazy('avto:avto_list')
     context_object_name = 'avto_delete'
     def test_func(self):

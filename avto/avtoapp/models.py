@@ -46,6 +46,34 @@ class Avto(models.Model):
     image_href_1 = models.CharField(max_length=50)
     image_href_2 = models.CharField(max_length=50)
 
+class Avto_pred(models.Model):
+    price = models.PositiveIntegerField()
+    price_pred = models.PositiveIntegerField()
+    vladeltsev = models.CharField(max_length=50)
+    year = models.PositiveIntegerField()
+    doors = models.PositiveIntegerField()
+    complectation = models.CharField(max_length=50)
+    box = models.CharField(max_length=50)
+    model = models.CharField(max_length=50)
+    modification = models.CharField(max_length=50)
+    pokolenie = models.CharField(max_length=50)
+    privod = models.CharField(max_length=50)
+    probeg = models.PositiveIntegerField()
+    rull = models.CharField(max_length=50)
+    sostoyanie = models.CharField(max_length=50)
+    type_engine = models.CharField(max_length=50)
+    type_kyzov = models.CharField(max_length=50)
+    color = models.CharField(max_length=50)
+    cat_marka = models.CharField(max_length=50)
+    cat_mesto = models.CharField(max_length=50)
+    # image = models.ImageField(upload_to='posts', null=True, blank=True)
+    text = models.TextField()
+    href = models.CharField(max_length=100)
+    image_href_0 = models.CharField(max_length=50)
+    image_href_1 = models.CharField(max_length=50)
+    image_href_2 = models.CharField(max_length=50)
+
+
     def __str__(self):
         return f'{self.model}, category: {self.cat_marka}'
 

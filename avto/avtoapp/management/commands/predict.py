@@ -3,7 +3,7 @@ from avtoapp.models import Avto, Marks, Mesto
 import json
 import os
 import keras
-import tensorflow as tf
+# import tensorflow as tf
 from django.conf import settings
 from keras.models import load_model
 # from tensorflow.keras.models import load_model
@@ -21,7 +21,9 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
 # import tensorflow as tf
-
+"""
+Предсказывает цену с помощью нейронных сетей. Но пока не работает.
+"""
 
 # %%
 def fill_top(column_top):

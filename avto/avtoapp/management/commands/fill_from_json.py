@@ -4,13 +4,17 @@ import json
 import os
 from django.conf import settings
 
+"""
+Заполнение таблиц из json  файла.
+"""
+
 # from blogapp.models import Poll
 
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
         # Считываем с файла cars_params_dict5.json
-        path = os.path.join(settings.BASE_DIR,'fixtures','cars_params_skoda.json' )
+        path = os.path.join(settings.BASE_DIR,'fixtures','parsed_cars.json' )
         with open(path, 'r') as f:
             result = json.load(f)
 
@@ -34,6 +38,7 @@ class Command(BaseCommand):
             except:
                 continue
 
+
             try:
                 price = result[i]['price']
                 vladeltsev = result[i]['ВладельцевпоПТС']
@@ -55,11 +60,11 @@ class Command(BaseCommand):
                 color = result[i]['Цвет']
                 cat_marka = Marks.objects.get(name = result[i]['Марка'])
                 cat_mesto = Mesto.objects.get(name = mesto)
-                text = result['text']
-                href = result['referense']
-                image_href_0 = result['image_href_0']
-                image_href_1 = result['image_href_1']
-                image_href_2 = result['image_href_2']
+                text = result[i]['text']
+                href = result[i]['referense']
+                image_href_0 = result[i]['image_href_0']
+                image_href_1 = result[i]['image_href_1']
+                image_href_2 = result[i]['image_href_2']
 
                 Avto.objects.create(price=price, vladeltsev = vladeltsev, year = year,
                                     doors= doors, complectation= complectation,
@@ -72,6 +77,7 @@ class Command(BaseCommand):
                                     image_href_2=image_href_2)
             except:
                 continue
+
 
 
 
