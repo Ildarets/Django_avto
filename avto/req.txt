@@ -14,7 +14,7 @@ Django==3.0.3
 django-cleanup==4.0.0
 django-debug-toolbar==2.2
 django-filter==2.2.0
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 Faker==0.9.1
 Flask==1.1.1
 gast==0.2.2
